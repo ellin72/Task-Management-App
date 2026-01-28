@@ -1,0 +1,98 @@
+# Dependabot configuration for Task Management App
+# This file configures automatic dependency updates via GitHub's Dependabot
+
+version: 2
+updates:
+  # Monitor npm dependencies
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 10
+    versioning-strategy: "increase"
+    labels:
+      - "dependencies"
+      - "npm"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    # Group dependencies by type
+    groups:
+      # Group all React-related dependencies
+      react:
+        patterns:
+          - "react*"
+        update-types:
+          - "minor"
+          - "patch"
+
+      # Group all Firebase dependencies
+      firebase:
+        patterns:
+          - "firebase*"
+        update-types:
+          - "minor"
+          - "patch"
+
+      # Group all TypeScript-related dependencies
+      typescript:
+        patterns:
+          - "typescript"
+          - "@types/*"
+        update-types:
+          - "minor"
+          - "patch"
+
+      # Group all build tools
+      build-tools:
+        patterns:
+          - "vite*"
+          - "esbuild"
+          - "rollup*"
+        update-types:
+          - "minor"
+          - "patch"
+
+      # Group all linting and formatting tools
+      dev-tools:
+        patterns:
+          - "eslint*"
+          - "prettier*"
+        update-types:
+          - "minor"
+          - "patch"
+
+      # Group Tailwind CSS dependencies
+      tailwind:
+        patterns:
+          - "tailwindcss"
+          - "@tailwindcss/*"
+          - "postcss"
+          - "autoprefixer"
+        update-types:
+          - "minor"
+          - "patch"
+
+    # Ignore specific updates if needed
+    ignore: []
+
+    # Automatically assign pull requests
+    assignees:
+      - "ellin72"
+
+  # Monitor GitHub Actions if you add any
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
