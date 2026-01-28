@@ -1,0 +1,10 @@
+# Vercel Configuration
+# This file is used to configure Vercel deployments
+# Environment variables should be added in the Vercel dashboard
+
+{
+    "buildCommand": "npm run build",
+    "outputDirectory": "dist",
+    "framework": "vite",
+    "installCommand": "npm install"
+}
