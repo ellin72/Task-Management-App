@@ -75,9 +75,6 @@ updates:
           - "minor"
           - "patch"
 
-    # Ignore specific updates if needed
-    ignore: []
-
     # Automatically assign pull requests
     assignees:
       - "ellin72"
